@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Website</title>
+    <title>Voiceflow Chatbot</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .chat-container { max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; }
-        .messages { border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: auto; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .chat-container { max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; background-color: white; }
+        .messages { border: 1px solid #ddd; padding: 10px; height: 300px; overflow-y: auto; margin-bottom: 10px; }
         .input-container { display: flex; }
         .input-container input { flex: 1; padding: 10px; border: 1px solid #ccc; }
-        .input-container button { padding: 10px; border: none; background: #007BFF; color: white; }
+        .input-container button { padding: 10px; border: none; background: #007BFF; color: white; cursor: pointer; }
+        .input-container button:hover { background: #0056b3; }
+        .message { margin-bottom: 10px; }
+        .message.user { text-align: right; }
+        .message.bot { text-align: left; color: blue; }
     </style>
 </head>
 <body>
@@ -22,6 +26,21 @@
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
+
     <script src="script.js"></script>
+
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '66954781f903b5ab22255426' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    versionID: 'production'
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
 </body>
 </html>
